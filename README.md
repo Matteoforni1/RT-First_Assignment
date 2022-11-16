@@ -1,6 +1,7 @@
 # First Assignment - Research Track 1
 ## Summary:
 
+This project has been developed by Forni Matteo, a student of Robotics Engineering at the University of Genoa.
 This document contains the information required for the first assignment, which include:
 
 - How the code works
