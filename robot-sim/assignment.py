@@ -7,13 +7,14 @@ a_th = 2.0
 """ float: Threshold for the control of the orientation"""
 
 d_th = 0.4
+""" float: Threshold for the control of the linear distance"""
 
 avoid_d_th = 0.85
-
-avoid_a_th = 20.0
+avoid_a_th = 20.0""" float: Threshold for the release of a previously grabbed silver token """
+""" floats: Thresholds for detecting blocks the robot must avoid """
 
 release_d_th = 0.55
-""" float: Threshold for the control of the linear distance"""
+""" float: Threshold for the release of a previously grabbed silver token """
 
 R = Robot()
 """ instance of the class Robot"""
@@ -50,7 +51,7 @@ def find_token(mark, holding, silver, gold):
 	
 	Parameters:
 	mark (string): the type of token the robot should looking for ('silver' or 'gold')
-	holding (
+	holding (int): a flag which allows to know if the robot is currently holding a token or not (the held token id if there's one, -1 otherwise)
 
 	Returns:
 	dist (float): distance of the closest token (-1 if no token is detected)
@@ -68,11 +69,11 @@ def find_token(mark, holding, silver, gold):
 			"""
 			If we see a golden token, while looking for a silver one, we control if we need to avoid it
 			"""
-			if token.info.marker_type is MARKER_TOKEN_GOLD:
+			if token.info.marker_type is MARKER_TOKEN_GOLD:		# if the token is too close (and it's not the held one), we want to avoid it!
 				
-				if (token.dist < avoid_d_th) & (-avoid_a_th < token.rot_y < avoid_a_th):		
-					print('EVITALO!')	
-					if token.rot_y <= 0:
+				if (token.dist < avoid_d_th) & (-avoid_a_th < token.rot_y < avoid_a_th):	
+					
+					if token.rot_y <= 0:	# we check in which direction the block should be avoided
 						sign = 1
 					else:
 						sign = -1
@@ -96,9 +97,9 @@ def find_token(mark, holding, silver, gold):
 					If the token is already coupled, we may want to avoid it, if it's too close
 					"""
 					if token.dist < avoid_d_th:
-						print('EVITALO!')
 						if -avoid_a_th < token.rot_y < avoid_a_th:
-							if token.rot_y <= 0:
+							
+							if token.rot_y <= 0:	# we check in which direction the block should be avoided
 								sign = 1
 							else:
 								sign = -1
@@ -112,13 +113,11 @@ def find_token(mark, holding, silver, gold):
 			If we see a silver token, while looking for a golden one, we control if we need to avoid it
 			"""
 			if token.info.marker_type is MARKER_TOKEN_SILVER:
-				if token.info.code != holding:
-					print('INFO')
-					print(token.dist)
-					print(token.rot_y)
-					if (token.dist < avoid_d_th) & (-avoid_a_th < token.rot_y < avoid_a_th):
-						print('EVITALO!')			
-						if token.rot_y <= 0:
+				if token.info.code != holding:			# if the token is too close (and it's not the held one), we want to avoid it!
+					
+					if (token.dist < avoid_d_th) & (-avoid_a_th < token.rot_y < avoid_a_th):		
+						
+						if token.rot_y <= 0:		# we check in which direction the block should be avoided
 							sign = 1
 						else:
 							sign = -1
@@ -139,10 +138,10 @@ def find_token(mark, holding, silver, gold):
 						rot_y=token.rot_y
 				
 				else:			# If the token is already coupled, we may want to avoid it, if it's too close
-					print('FIRST TRY')
+					
 					if (token.dist < avoid_d_th) & (-avoid_a_th < token.rot_y < avoid_a_th):
-						print('EVITALO!')
-						if token.rot_y <= 0:
+						
+						if token.rot_y <= 0:	# we check in which direction the block should be avoided
 							sign = 1
 						else:
 							sign = -1
