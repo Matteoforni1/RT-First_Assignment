@@ -263,7 +263,12 @@ END FUNCTION
 
 The code is written in Python and in particular, Python2 is needed on your computer, in order to run this project.
 Moreover, the following libraries are also needed to run the code: the [pygame](http://pygame.org/) library, the [PyPyBox2D](https://pypi.python.org/pypi/pypybox2d/2.1-r331) library and the [PyYAML](https://pypi.python.org/pypi/PyYAML) library.
-You can download the .py files from the repository. Then, the code is executable by going in the folder where you've put the downloaded files and executing the following command: python2 run.py -o assignment.py (or whatever name you've given to the downloaded files).
+You can download the .py files from the repository. Then, the code is executable by going in the folder where you've put the downloaded files and executing the following command:
+
+```bash
+$ python run.py assignment.py
+```
+(or whatever name you've given to the downloaded files).
 During the execution, no input from the user is required.
 
 ## Possible improvements:
