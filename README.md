@@ -194,7 +194,7 @@ FUNCTION find_token(mark,holding,silver,gold)
 END FUNCTION
 
 
-FUNCTION AVOID(sign)
+FUNCTION avoid(sign)
 	
 	call the turn function, passing as parameters 15*sign and 0.5
 	call the drive function, passing as parameters 50 and 0.8
@@ -203,7 +203,7 @@ FUNCTION AVOID(sign)
 END FUNCTION
 
 
-FUNCTION MAIN()
+FUNCTION main()
 
 	set mark to 'silver'
 	set holding_id to -1
@@ -276,6 +276,6 @@ During the execution, no input from the user is required.
 
 There is some possible improvement to implement into this code:
 
-- By starting from the center of the map, the robot could turn 360° degrees and map all silver and gold token in some distance vectors, such that the robot is able to optimize its performance, knowing which golden token is closer to each silver one. This would probably reduce the time of execution.
-- By turning 360° degrees, the robot could also count the number of blocks present on the entire map; in this way, the code wuold work for every number of silver and gold tokens: the code, with some modification, would terminate after he verify that there is no longer any uncoupled silver or golden token.
-- The avoid function is used, as it was said before, to avoid dragging more silver tokens next to gold ones. This has been done for a particular reason: if two or more silver tokens are next to each others, when we use the grab method, there is a possibility that the grabbed token isn't the one that has yet to be coupled, but the one already coupled. This would lead to some problems. With the starting arrangement of the blocks, the avoid function is sufficient to avoid this problem, but, in order to avoid this problem in a more generalized way (i.e: for a different arrangement), a function which check if the grabbed token is already coupled or not could be implemented.
+- By starting from a better position (i.e. the center of the map), or just by going there at the start of the execution, the robot could turn 360° degrees and map all silver and gold token in some distance vectors, such that the robot is able to optimize its performance, knowing which golden token is closer to each silver one. This would probably reduce the time of execution.
+- By turning 360° degrees, the robot could also count the number of blocks present on the entire map; in this way, the code would work for every number of silver and gold tokens: the code, with some modification, would terminate after he verify that there is no longer any uncoupled silver or golden token.
+- The avoid function is used, as it was said before, to avoid dragging more silver tokens next to gold ones. This has been done for a particular reason: if two or more silver tokens are next to each others (in our case: a coupled and an uncoupled silver tokens both next to a gold one), when we use the grab method, there is a possibility that the grabbed token isn't the one that has yet to be coupled, but the one already coupled. This would lead to some problems. With the starting arrangement of the blocks, the avoid function is sufficient to avoid this problem, but, in order to avoid this problem in a more generalized way (i.e: for a different arrangement), a function which check if the grabbed token is already coupled or not could be implemented.
