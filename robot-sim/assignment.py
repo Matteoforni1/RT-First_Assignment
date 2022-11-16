@@ -205,7 +205,7 @@ def main():
 			print("Right a bit...")
 			turn(+2, 0.5)
 			
-		if len(gold_id_vector) == 6:	# We coupled all the gold tokens with silver ones, so we can terminate the execution!
+		if (len(gold_id_vector) == 6) & (len(silver_id_vector) == 6):	# We coupled all the gold tokens with silver ones, so we can terminate the execution!
 			print('We did it!')
 			return
 main()
