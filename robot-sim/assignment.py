@@ -8,7 +8,7 @@ a_th = 2.0
 
 d_th = 0.4
 
-avoid_d_th = 0.8
+avoid_d_th = 0.85
 
 avoid_a_th = 20.0
 
