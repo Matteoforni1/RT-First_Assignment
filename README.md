@@ -16,7 +16,7 @@ The code is divided into five different functions (main included):
 - The turn function is used to turn the robot left or right (depending on the input parameter)
 - The drive function is used to drive the robot forward or backward (depending on the input parameter)
 - The find token function is used to find one of the nearest token around and to prepare the robot trajectory, in order to go for it
-- the avoid function is used to avoid undesired tokens (for example: we want to avoid other silver tokens, while we're already holding one, in order to avoid to drag other blocks away with the robot)
+- the avoid function is used to avoid undesired tokens (for example: we want to avoid other silver tokens, while we're already holding one, in order to avoid dragging other blocks away with the robot)
 - The main function uses the previous four functions to make the code work. The details will be discussed in the next lines...
 
 
