@@ -1,3 +1,4 @@
+""" we import what is needed for the program to work """
 from __future__ import print_function
 
 import time
@@ -167,7 +168,7 @@ def avoid(sign):
 def main():
 	silver_id_vector = []
 	gold_id_vector = []
-	holding_id = -1	# We initialize some variables and vectors
+	holding_id = -1	# We initialize some the holding flag and the vectors
 	mark = 'silver'	# We also set the value of mark to silver
 	while (1):
 		dist, rot_y, token_id = find_token(mark, holding_id, silver_id_vector, gold_id_vector)  # we look for tokens
@@ -176,7 +177,7 @@ def main():
 			turn(-10,1)
 		elif dist <d_th: # We're close to an uncoupled token
 			if mark == 'silver':
-				print("Found it!")
+				print("I Find it!")
 				R.grab() # if we are close to the token, we grab it.
 				print("Gotcha!") 
 				mark = 'gold'	# We change the value of mark, so we can look for the golden token
@@ -184,7 +185,7 @@ def main():
 				silver_id_vector.append(token_id)	# We save the token id into the silver vector
 				
 		elif (dist <release_d_th) & (mark == 'gold') & (holding_id != -1):	# We found a golden token, while we were looking for one!
-			print('Found the other one!')
+			print('I Find the other one!')
 			R.release() # if we are close to a golden token, we release the silver token next to it.
 			print('Done it!')
 			mark = 'silver'
@@ -207,4 +208,5 @@ def main():
 		if (len(gold_id_vector) == 6) & (len(silver_id_vector) == 6):	# We coupled all the gold tokens with silver ones, so we can terminate the execution!
 			print('We did it!')
 			return
-main()
+
+main()		# the main function is called, in order to start the execution
